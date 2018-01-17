@@ -1,7 +1,10 @@
 var fs = require('fs');
-var StatMode = require('stat-mode');
-
-fs.stat('./cat.jpg', function(err, stats) {
-    var statMode = new StatMode(stats);
-    console.log(statMode.toString());
+var colors = require('colors');
+var p = "../"
+fs.readdir(p, function (err, files) {
+    console.log('LISTA PLIKÓW: \n'.red, files);
+    fs.writeFile('./listakatalogow.txt', files, function(err){
+        if (err) throw err;
+        console.log('ZAPISANO DO PLIKU'.red);
+    })
 });
